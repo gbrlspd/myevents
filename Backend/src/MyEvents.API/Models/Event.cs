@@ -8,11 +8,11 @@ namespace MyEvents.API.Models
     public class Event
     {
         public int EventID { get; set; }
-        public string Place { get; set; }
-        public string Date { get; set; }
-        public string Theme { get; set; }
-        public int PeopleQty { get; set; }
-        public string Batch { get; set; }
-        public string? ImageURL { get; set; }
+        public string Place { get; set; } = "Nowhere";
+        public string Date { get; set; } = "23/01/2002";
+        public string Theme { get; set; } = "Blank";
+        public int PeopleQty { get; set; } = 0;
+        public string Batch { get; set; } = "1st Batch";
+        public string ImageURL { get; set; } = "No image";
     }
 }
