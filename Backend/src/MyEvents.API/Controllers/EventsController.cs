@@ -6,10 +6,10 @@ namespace MyEvents.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EventController : ControllerBase
+public class EventsController : ControllerBase
 {
     private readonly DataContext context;
-    public EventController(DataContext context)
+    public EventsController(DataContext context)
     {
       this.context = context;
     }
