@@ -1,6 +1,57 @@
-<h1>Events Component</h1>
-
-<div *ngFor="let event of events">
-  <p>Theme: {{ event.theme }}</p>
-  <p>Place: {{ event.place }}</p>
+<h2>Events</h2>
+<div class="input-group mb-2">
+  <span class="input-group-text">Filter</span>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Type the event theme or place..."
+    [(ngModel)]="listFilter"
+  />
 </div>
+<table class="table table-striped table-borderless">
+  <thead class="table-dark">
+    <tr class="align-middle">
+      <th class="text-center">
+        <button class="btn btn-sm btn-secondary" (click)="toggleImg()">
+          {{ showImg ? "Hide Image" : "Show Image" }}
+        </button>
+      </th>
+      <th>ID</th>
+      <th>Theme</th>
+      <th>Place</th>
+      <th>Date</th>
+      <th>People Qty.</th>
+      <th>Batch</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="events && events.length">
+    <tr *ngFor="let event of filteredEvents" class="align-middle">
+      <td align="center">
+        <img
+          src="/assets/{{ event.imageURL }}"
+          [style.width.px]="imgWidth"
+          [collapse]="!showImg"
+          [isAnimated]="true"
+        />
+      </td>
+      <td>{{ event.eventID }}</td>
+      <td>{{ event.theme }}</td>
+      <td>{{ event.place }}</td>
+      <td>{{ event.date }}</td>
+      <td>{{ event.peopleQty }}</td>
+      <td>{{ event.batch }}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm me-2">Edit</button>
+        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!events.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>No events found.</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
