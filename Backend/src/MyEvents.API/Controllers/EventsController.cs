@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using MyEvents.API.Data;
-using MyEvents.API.Models;
+using MyEvents.Persistance;
+using MyEvents.Domain;
 
 namespace MyEvents.API.Controllers;
 
@@ -8,8 +8,8 @@ namespace MyEvents.API.Controllers;
 [Route("api/[controller]")]
 public class EventsController : ControllerBase
 {
-    private readonly DataContext context;
-    public EventsController(DataContext context)
+    private readonly MyEventsContext context;
+    public EventsController(MyEventsContext context)
     {
       this.context = context;
     }
@@ -23,6 +23,6 @@ public class EventsController : ControllerBase
     [HttpGet("{id}")]
     public Event GetByID(int id)
     {
-        return context.Events.FirstOrDefault(e => e.EventID == id);
+        return context.Events.FirstOrDefault(e => e.ID == id);
     }
 }
